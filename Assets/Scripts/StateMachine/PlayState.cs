@@ -12,14 +12,10 @@
     public void Enter()
     {
         _uI.PlayMenu.Show();
-        _player.StartMove();
-        //_player.Animator.Play(PlayerAnimator.Run);
-        _player.AnimatorController.Run();
     }
 
     public void Exit()
     {
         _uI.PlayMenu.Hide();
-        _player.StopMove();
     }
 }

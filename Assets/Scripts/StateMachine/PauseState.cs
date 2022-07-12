@@ -12,8 +12,6 @@
     public void Enter()
     {
         _uI.SettingsMenu.Show();
-        //_player.Animator.Play(PlayerAnimator.Idle);
-        _player.AnimatorController.Idle();
     }
 
     public void Exit()

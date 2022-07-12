@@ -12,24 +12,10 @@
     public void Enter()
     {
         _uI.FinisherMenu.Show();
-        _player.StopMove();
-        _player.SetEnergyBarActive(false);
-        _player.Coins.Changed += OnCoinsChanged;
-        _player.AnimatorController.Finisher();
-        _player.Finisher.ShowFinisher(_player, () =>
-        {
-            _player.OnEndLevel();
-        });
     }
 
     public void Exit()
     {
         _uI.FinisherMenu.Hide();
-        _player.Coins.Changed -= OnCoinsChanged;
-    }
-
-    private void OnCoinsChanged(int value)
-    {
-        _uI.FinisherMenu.CoinText.text = value.ToString();
     }
 }
