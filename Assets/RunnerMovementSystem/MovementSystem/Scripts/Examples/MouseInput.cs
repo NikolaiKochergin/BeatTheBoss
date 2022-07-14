@@ -12,6 +12,26 @@ namespace RunnerMovementSystem.Examples
 
         public bool IsMoved { get; private set; }
 
+        private void Update()
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                _saveOffset = _roadMovement.Offset;
+                _mousePosition = Input.mousePosition;
+                IsMoved = true;
+            }
+
+            if (Input.GetMouseButton(0))
+            {
+                var offset = Input.mousePosition - _mousePosition;
+                _roadMovement.SetOffset(_saveOffset + offset.x * _sensitivity);
+            }
+
+            _roadMovement.MoveForward();
+
+            if (Input.GetMouseButtonUp(0)) IsMoved = false;
+        }
+
         private void OnEnable()
         {
             _roadMovement.PathChanged += OnPathChanged;
@@ -26,28 +46,6 @@ namespace RunnerMovementSystem.Examples
         {
             _saveOffset = _roadMovement.Offset;
             _mousePosition = Input.mousePosition;
-        }
-
-        private void Update()
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                _saveOffset = _roadMovement.Offset;
-                _mousePosition = Input.mousePosition;
-                IsMoved = true;
-            }
-
-            if (Input.GetMouseButton(0))
-            {
-                var offset = Input.mousePosition - _mousePosition;
-                _roadMovement.SetOffset(_saveOffset + offset.x * _sensitivity);
-                _roadMovement.MoveForward();
-            }
-
-            if (Input.GetMouseButtonUp(0))
-            {
-                IsMoved = false;
-            }
         }
     }
 }

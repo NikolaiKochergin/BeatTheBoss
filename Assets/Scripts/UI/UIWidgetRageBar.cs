@@ -15,7 +15,8 @@ public class UIWidgetRageBar : MonoBehaviour
 
     private void OnDisable()
     {
-        _parameter.Changed -= OnParameterChanged;
+        if (_parameter != null)
+            _parameter.Changed -= OnParameterChanged;
     }
 
     public void Initialize(Parameter parameter, int maxValue)
@@ -30,7 +31,6 @@ public class UIWidgetRageBar : MonoBehaviour
     private void OnParameterChanged(int value)
     {
         var normalizeValue = (float) value / _maxValue;
-        Debug.Log(normalizeValue);
         _progressBar.SetValue(normalizeValue);
     }
 }

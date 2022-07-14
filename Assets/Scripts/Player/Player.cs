@@ -2,38 +2,23 @@ using RunnerMovementSystem;
 using RunnerMovementSystem.Examples;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : PlayerBase
 {
     [SerializeField] private MouseInput _mouseInput;
     [SerializeField] private MovementSystem _movementSystem;
-    [SerializeField] private CollisionHandler _collisionHandler;
-    [SerializeField] private UIWidgetRageBar _rageBar;
-    [SerializeField] private PlayerConfig _playerConfig;
+    [SerializeField] private PlayerAnimator _playerAnimator;
 
-    private Parameter _rage;
-
-    public MouseInput MouseInput => _mouseInput;
-    public MovementSystem MovementSystem => _movementSystem;
-    public CollisionHandler CollisionHandler => _collisionHandler;
-
-    private void Awake()
+    public PlayerAnimator PlayerAnimator => _playerAnimator;
+    
+    public void StartMove()
     {
-        _rage = new Parameter(_playerConfig.DefaultRage);
-        _rageBar.Initialize(_rage, _playerConfig.MaxRage);
+        _mouseInput.enabled = true;
+        _movementSystem.enabled = true;
     }
 
-    private void OnEnable()
+    public void StopMove()
     {
-        _collisionHandler.ItemTaken += OnItemTaken;
-    }
-
-    private void OnDisable()
-    {
-        _collisionHandler.ItemTaken -= OnItemTaken;
-    }
-
-    private void OnItemTaken(Item item)
-    {
-        _rage.Set(_rage.Value + item.RageValue);
+        _mouseInput.enabled = false;
+        _movementSystem.enabled = false;
     }
 }

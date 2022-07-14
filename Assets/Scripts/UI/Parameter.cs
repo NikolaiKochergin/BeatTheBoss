@@ -25,4 +25,12 @@ public class Parameter
     {
         Value = value < 0 ? 0 : value;
     }
+
+    public void Add(int value)
+    {
+        if (Value < -value)
+            Value = 0;
+        else
+            Value += value;
+    }
 }
