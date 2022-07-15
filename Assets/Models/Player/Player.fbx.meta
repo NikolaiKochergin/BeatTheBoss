@@ -6,7 +6,82 @@ ModelImporter:
   - first:
       74: -4791504522942941401
     second: Armature|Armature|mixamo.com|Layer0
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #128
+    second: {fileID: 2100000, guid: 12677c85f9f845943877efb675f61810, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: belt_part
+    second: {fileID: 2100000, guid: c6409b54b0e5bfe42a1717cea3eece0c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: button
+    second: {fileID: 2100000, guid: 67ad977626faa1a4aa33cb11719b3c45, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: circle
+    second: {fileID: 2100000, guid: b08c232fe542d4d46b6d828e278a73aa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: eye_mat1
+    second: {fileID: 2100000, guid: 1d7f2c97e6cc67b4291991b586ae5011, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: eye_mat2
+    second: {fileID: 2100000, guid: 6c03f2ddcf7096b4ea8355f6f1c5f478, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: eye_mat3
+    second: {fileID: 2100000, guid: a51437180ba081345be8585ab2ec635a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hair
+    second: {fileID: 2100000, guid: e2da2a5d0f3532540b0f7406404d1003, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: leather
+    second: {fileID: 2100000, guid: ce1d881bb4a537a43a96ff24aa2698df, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lips
+    second: {fileID: 2100000, guid: 8480da5842046754e8dcd001a69e2302, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: shirt
+    second: {fileID: 2100000, guid: f75e7ee940fd09842b483773839da5e4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: skin
+    second: {fileID: 2100000, guid: 831f7e44ae006a5448bc6aa5bd76eb9b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sole
+    second: {fileID: 2100000, guid: 757b5d0da40f6fe418b88a599cef2eff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: suit
+    second: {fileID: 2100000, guid: 74597e9cd97f1b14d9d92ea0f4530e35, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tie
+    second: {fileID: 2100000, guid: 01cac986f0d7f2b4da1c2a19e108548a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

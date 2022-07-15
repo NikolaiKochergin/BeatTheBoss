@@ -18,6 +18,7 @@
 
     public void Exit()
     {
+        _player.StopMove();
         _uI.PlayMenu.Hide();
     }
 }
