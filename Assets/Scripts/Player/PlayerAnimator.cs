@@ -18,20 +18,7 @@ public class PlayerAnimator : MonoBehaviour
 
     private float _currentTurnValue;
 
-    public event Action ThrowPrepareEnded;
     public event Action ThrowEnded;
-
-    private void OnEnable()
-    {
-        _endAnimationHandler.ThrowPrepareEnded += OnThrowPrepareEnded;
-        _endAnimationHandler.ThrowEnded += OnThrowEnded;
-    }
-
-    private void OnDisable()
-    {
-        _endAnimationHandler.ThrowPrepareEnded -= OnThrowPrepareEnded;
-        _endAnimationHandler.ThrowEnded -= OnThrowEnded;
-    }
 
     public void SetTurn(float value)
     {
@@ -58,16 +45,18 @@ public class PlayerAnimator : MonoBehaviour
         _playerAnimator.SetTrigger(Stumbling);
     }
 
-    public void ShowThrowStart()
+    public void ShowThrowPrepare(Action ended)
     {
         ResetTriggers();
         _playerAnimator.SetTrigger(ThrowStart);
+        _endAnimationHandler.WaitingForThrowPrepare(ended);
     }
 
     public void ShowThrowEnd()
     {
         ResetTriggers();
         _playerAnimator.SetTrigger(ThrowEnd);
+        _endAnimationHandler.WaitingForThrowEnded(()=> ThrowEnded?.Invoke());
     }
 
     private void ResetTriggers()
@@ -77,15 +66,5 @@ public class PlayerAnimator : MonoBehaviour
         _playerAnimator.ResetTrigger(Stumbling);
         _playerAnimator.ResetTrigger(ThrowStart);
         _playerAnimator.ResetTrigger(ThrowEnd);
-    }
-
-    private void OnThrowPrepareEnded()
-    {
-        ThrowPrepareEnded?.Invoke();
-    }
-
-    private void OnThrowEnded()
-    {
-        ThrowEnded?.Invoke();
     }
 }

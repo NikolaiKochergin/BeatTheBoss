@@ -14,23 +14,16 @@ public class GateState : IState
     public void Enter()
     {
         _player.StopMove();
-        _player.PlayerAnimator.ThrowPrepareEnded += OnThrowPrepareEnded;
-        _player.PlayerAnimator.ShowThrowStart();
+        _player.PlayerAnimator.ShowThrowPrepare(_player.ThrowInput.Enable);
+        _player.ThrowInput.Throw += OnThrowStarted;
         _boss.StopMove();
         _boss.BossAnimator.ShowTerrified();
     }
 
     public void Exit()
     {
-        _player.PlayerAnimator.ThrowPrepareEnded -= OnThrowPrepareEnded;
         _player.ThrowInput.Throw -= OnThrowStarted;
         _player.ThrowInput.Disable();
-    }
-
-    private void OnThrowPrepareEnded()
-    {
-        _player.ThrowInput.Enable();
-        _player.ThrowInput.Throw += OnThrowStarted;
     }
 
     private void OnThrowStarted()
