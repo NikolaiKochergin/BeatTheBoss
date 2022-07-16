@@ -9,7 +9,12 @@ public class Player : PlayerBase
     [SerializeField] private PlayerAnimator _playerAnimator;
 
     public PlayerAnimator PlayerAnimator => _playerAnimator;
-    
+
+    private void Update()
+    {
+        _playerAnimator.SetTurn(_mouseInput.TurnValue);
+    }
+
     public void StartMove()
     {
         _mouseInput.enabled = true;

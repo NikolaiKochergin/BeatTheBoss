@@ -130,6 +130,6 @@ MonoBehaviour:
   _moveSpeed: 10
   _rotationSpeed: 10
   _target: {fileID: 0}
-  _height: 13
-  _distance: 13
-  _lookAngle: 30
+  _height: 4.2
+  _distance: 8
+  _lookAngle: 15

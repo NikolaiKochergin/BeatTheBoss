@@ -6,6 +6,7 @@ public class StateMachine : MonoBehaviour
 {
     [SerializeField] private UI _uI;
     [SerializeField] private Player _player;
+    [SerializeField] private Boss _boss;
     
     private Dictionary<Type, IState> _statesMap;
     private IState _currentState;
@@ -36,12 +37,12 @@ public class StateMachine : MonoBehaviour
     {
         _statesMap = new Dictionary<Type, IState>
         {
-            [typeof(IdleState)] = new IdleState(_uI, _player),
-            [typeof(PlayState)] = new PlayState(_uI, _player),
-            [typeof(PauseState)] = new PauseState(_uI, _player),
-            [typeof(FinisherState)] = new FinisherState(_uI, _player),
-            [typeof(EndLevelState)] = new EndLevelState(_uI, _player),
-            [typeof(FailState)] = new FailState(_uI, _player)
+            [typeof(IdleState)] = new IdleState(_uI, _player, _boss),
+            [typeof(PlayState)] = new PlayState(_uI, _player, _boss),
+            [typeof(PauseState)] = new PauseState(_uI, _player, _boss),
+            [typeof(FinisherState)] = new FinisherState(_uI, _player, _boss),
+            [typeof(EndLevelState)] = new EndLevelState(_uI, _player, _boss),
+            [typeof(FailState)] = new FailState(_uI, _player, _boss)
         };
     }
 
