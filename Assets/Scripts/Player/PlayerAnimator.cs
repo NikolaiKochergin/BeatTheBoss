@@ -1,16 +1,37 @@
+using System;
 using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
 {
     private const string Idle = nameof(Idle);
     private const string Run = nameof(Run);
+    private const string Stumbling = nameof(Stumbling);
+    private const string ThrowStart = nameof(ThrowStart);
+    private const string ThrowEnd = nameof(ThrowEnd);
+    
     private const string Turn = nameof(Turn);
 
     [SerializeField] private Animator _playerAnimator;
+    [SerializeField] private EndAnimationHandler _endAnimationHandler;
     [SerializeField] private float _turnSpeed = 30;
     [SerializeField] private float _sensitivity = 50000;
 
     private float _currentTurnValue;
+
+    public event Action ThrowPrepareEnded;
+    public event Action ThrowEnded;
+
+    private void OnEnable()
+    {
+        _endAnimationHandler.ThrowPrepareEnded += OnThrowPrepareEnded;
+        _endAnimationHandler.ThrowEnded += OnThrowEnded;
+    }
+
+    private void OnDisable()
+    {
+        _endAnimationHandler.ThrowPrepareEnded -= OnThrowPrepareEnded;
+        _endAnimationHandler.ThrowEnded -= OnThrowEnded;
+    }
 
     public void SetTurn(float value)
     {
@@ -31,9 +52,40 @@ public class PlayerAnimator : MonoBehaviour
         _playerAnimator.SetTrigger(Run);
     }
 
+    public void ShowStumbling()
+    {
+        ResetTriggers();
+        _playerAnimator.SetTrigger(Stumbling);
+    }
+
+    public void ShowThrowStart()
+    {
+        ResetTriggers();
+        _playerAnimator.SetTrigger(ThrowStart);
+    }
+
+    public void ShowThrowEnd()
+    {
+        ResetTriggers();
+        _playerAnimator.SetTrigger(ThrowEnd);
+    }
+
     private void ResetTriggers()
     {
         _playerAnimator.ResetTrigger(Idle);
         _playerAnimator.ResetTrigger(Run);
+        _playerAnimator.ResetTrigger(Stumbling);
+        _playerAnimator.ResetTrigger(ThrowStart);
+        _playerAnimator.ResetTrigger(ThrowEnd);
+    }
+
+    private void OnThrowPrepareEnded()
+    {
+        ThrowPrepareEnded?.Invoke();
+    }
+
+    private void OnThrowEnded()
+    {
+        ThrowEnded?.Invoke();
     }
 }

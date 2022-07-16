@@ -20,12 +20,18 @@ public class StateMachine : MonoBehaviour
     {
         _uI.MainMenu.StartButton.onClick.AddListener(SetPlayState);
         _uI.SettingsMenu.ResumeButton.onClick.AddListener(SetPlayState);
+
+        _player.CollisionHandler.GateTaken += SetGateState;
+        _player.PlayerAnimator.ThrowEnded += SetPlayState;
     }
 
     private void OnDisable()
     {
         _uI.MainMenu.StartButton.onClick.RemoveListener(SetPlayState);
         _uI.SettingsMenu.ResumeButton.onClick.RemoveListener(SetPlayState);
+
+        _player.CollisionHandler.GateTaken -= SetGateState;
+        _player.PlayerAnimator.ThrowEnded -= SetPauseState;
     }
 
     private void Start()
@@ -42,7 +48,8 @@ public class StateMachine : MonoBehaviour
             [typeof(PauseState)] = new PauseState(_uI, _player, _boss),
             [typeof(FinisherState)] = new FinisherState(_uI, _player, _boss),
             [typeof(EndLevelState)] = new EndLevelState(_uI, _player, _boss),
-            [typeof(FailState)] = new FailState(_uI, _player, _boss)
+            [typeof(FailState)] = new FailState(_uI, _player, _boss),
+            [typeof(GateState)] = new GateState(_uI, _player, _boss)
         };
     }
 
@@ -79,6 +86,12 @@ public class StateMachine : MonoBehaviour
     private void SetFailState()
     {
         var state = GetState<FailState>();
+        SetState(state);
+    }
+
+    private void SetGateState()
+    {
+        var state = GetState<GateState>();
         SetState(state);
     }
 

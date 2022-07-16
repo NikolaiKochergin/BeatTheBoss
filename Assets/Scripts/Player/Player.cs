@@ -6,13 +6,13 @@ public class Player : PlayerBase
 {
     [SerializeField] private MouseInput _mouseInput;
     [SerializeField] private MovementSystem _movementSystem;
-    [SerializeField] private PlayerAnimator _playerAnimator;
+    [SerializeField] private ThrowInput _throwInput;
 
-    public PlayerAnimator PlayerAnimator => _playerAnimator;
+    public ThrowInput ThrowInput => _throwInput;
 
     private void Update()
     {
-        _playerAnimator.SetTurn(_mouseInput.TurnValue);
+        PlayerAnimator.SetTurn(_mouseInput.TurnValue);
     }
 
     public void StartMove()
