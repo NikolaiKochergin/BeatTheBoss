@@ -16,6 +16,7 @@
         _uI.MainMenu.Show();
         _player.StopMove();
         _player.PlayerAnimator.ShowIdle();
+        _player.UIWidgetRageBar.Hide();
         _boss.StopMove();
         _boss.BossAnimator.ShowIdle();
     }

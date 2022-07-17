@@ -185,6 +185,7 @@ MonoBehaviour:
   _uI: {fileID: 0}
   _player: {fileID: 1044729402}
   _boss: {fileID: 0}
+  _mainCameraAnimator: {fileID: 0}
 --- !u!114 &1616357498
 MonoBehaviour:
   m_ObjectHideFlags: 0

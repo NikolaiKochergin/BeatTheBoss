@@ -14,6 +14,7 @@
     public void Enter()
     {
         _uI.PlayMenu.Show();
+        _player.UIWidgetRageBar.Show();
         _player.StartMove();
         _player.PlayerAnimator.ShowRun();
         _boss.StarMove();

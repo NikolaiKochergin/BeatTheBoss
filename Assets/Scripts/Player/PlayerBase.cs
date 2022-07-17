@@ -10,6 +10,7 @@ public class PlayerBase : MonoBehaviour
     private Parameter _rage;
 
     public CollisionHandler CollisionHandler => _collisionHandler;
+    public UIWidgetRageBar UIWidgetRageBar => _rageBar;
     public PlayerAnimator PlayerAnimator => _playerAnimator;
 
     private void Awake()

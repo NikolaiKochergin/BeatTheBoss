@@ -7,6 +7,7 @@ public class StateMachine : MonoBehaviour
     [SerializeField] private UI _uI;
     [SerializeField] private Player _player;
     [SerializeField] private Boss _boss;
+    [SerializeField] private MainCameraAnimator _mainCameraAnimator;
     
     private Dictionary<Type, IState> _statesMap;
     private IState _currentState;
@@ -49,7 +50,7 @@ public class StateMachine : MonoBehaviour
             [typeof(FinisherState)] = new FinisherState(_uI, _player, _boss),
             [typeof(EndLevelState)] = new EndLevelState(_uI, _player, _boss),
             [typeof(FailState)] = new FailState(_uI, _player, _boss),
-            [typeof(GateState)] = new GateState(_uI, _player, _boss)
+            [typeof(GateState)] = new GateState(_uI, _player, _boss, _mainCameraAnimator)
         };
     }
 

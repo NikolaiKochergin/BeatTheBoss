@@ -8,6 +8,7 @@ public class UI : MonoBehaviour
     [SerializeField] private FinisherMenu _finisherMenu;
     [SerializeField] private EndLevelMenu _endLevelMenu;
     [SerializeField] private FailMenu _failMenu;
+    [SerializeField] private GateMenu _gateMenu;
 
     public MainMenu MainMenu => _mainMenu;
     public PlayMenu PlayMenu => _playMenu;
@@ -15,4 +16,5 @@ public class UI : MonoBehaviour
     public FinisherMenu FinisherMenu => _finisherMenu;
     public EndLevelMenu EndLevelMenu => _endLevelMenu;
     public FailMenu FailMenu => _failMenu;
+    public GateMenu GateMenu => _gateMenu;
 }
