@@ -16,10 +16,16 @@ public class CollisionHandler : MonoBehaviour
         }
 
         if (trap)
+        {
+            trap.Disable();
             TrapTaken?.Invoke(trap);
-        
-        if(gate)
+        }
+
+        if (gate)
+        {
+            gate.Disable();
             GateTaken?.Invoke();
+        }
     }
 
     public event Action<Item> ItemTaken;

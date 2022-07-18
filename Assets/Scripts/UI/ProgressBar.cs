@@ -7,7 +7,6 @@ public class ProgressBar : MonoBehaviour
 
     public void SetValue(float valueNormalized)
     {
-        Debug.Log("Сделать тут плавное изменение слайдера и добавить частицы");
         _imgFiller.fillAmount = valueNormalized;
     }
 }

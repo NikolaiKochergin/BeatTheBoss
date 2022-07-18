@@ -2,7 +2,7 @@ using RunnerMovementSystem;
 using RunnerMovementSystem.Examples;
 using UnityEngine;
 
-public class Player : PlayerBase
+public sealed class Player : PlayerBase
 {
     [SerializeField] private MouseInput _mouseInput;
     [SerializeField] private MovementSystem _movementSystem;

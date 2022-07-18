@@ -30,6 +30,7 @@ public class MainCameraAnimator : MonoBehaviour
 
     public void ShowThrowViewOut()
     {
+        Enable();
         _animator.Play(ThrowViewOut);
     }
 }

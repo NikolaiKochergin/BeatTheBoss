@@ -7,6 +7,8 @@ public class EndAnimationHandler : MonoBehaviour
 
     private Action ThrowPrepareEnded;
 
+    public event Action GrenadeDropped;
+
     public void WaitingForThrowPrepare(Action callback)
     {
         ThrowPrepareEnded = callback;
@@ -28,5 +30,10 @@ public class EndAnimationHandler : MonoBehaviour
     private void Handler_ThrowPrepareEnded()
     {
         ThrowPrepareEnded?.Invoke();
+    }
+
+    private void Handler_DropGrenade()
+    {
+        GrenadeDropped?.Invoke();
     }
 }
