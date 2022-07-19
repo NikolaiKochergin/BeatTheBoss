@@ -8,6 +8,7 @@ public class CollisionHandler : MonoBehaviour
         var item = other.GetComponentInParent<Item>();
         var trap = other.GetComponentInParent<Trap>();
         var gate = other.GetComponentInParent<Gate>();
+        var finisher = other.GetComponentInParent<Finisher>();
 
         if (item)
         {
@@ -26,9 +27,16 @@ public class CollisionHandler : MonoBehaviour
             gate.Disable();
             GateTaken?.Invoke();
         }
+
+        if (finisher)
+        {
+            finisher.DisableTrigger();
+            FinisherTaken?.Invoke();
+        }
     }
 
     public event Action<Item> ItemTaken;
     public event Action<Trap> TrapTaken;
     public event Action GateTaken;
+    public event Action FinisherTaken;
 }

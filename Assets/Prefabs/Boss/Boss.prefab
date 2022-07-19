@@ -354,6 +354,7 @@ MonoBehaviour:
   _bossAnimator: {fileID: 4499917311205908217}
   _bossHittedView: {fileID: 2498911919427242320}
   _bossInput: {fileID: 163751834}
+  _movementSystem: {fileID: 2202837449274316726}
 --- !u!114 &1681857844098493947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,7 +383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _firstRoad: {fileID: 0}
   _options:
-    _moveSpeed: 15
+    _moveSpeed: 10
     _rotationSpeed: 20
     _borderOffset: 1
 --- !u!114 &163751834

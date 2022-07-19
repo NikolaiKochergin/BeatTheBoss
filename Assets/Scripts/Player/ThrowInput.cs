@@ -11,17 +11,20 @@ public class ThrowInput : MonoBehaviour
     [SerializeField] private GrenadeSpawnPoint _grenadeSpawnPoint;
 
     [SerializeField] private EndAnimationHandler _endAnimationHandler;
+    [SerializeField] private ParticleSystem _rayParticles;
+    [SerializeField] private ParticleSystem _pointParticles;
+
+    [SerializeField] private LayerMask _layerMask;
 
     private Vector3 _clickPosition;
 
     private Quaternion _defaultRotation;
+
+    private Vector3 _grenadeTargetPoint;
     private Camera _mainCamera;
 
     private Ray _ray;
     private Grenade _spawnedGrenade;
-
-    private Vector3 _grenadeTargetPoint;
-
 
     private void Awake()
     {
@@ -47,28 +50,34 @@ public class ThrowInput : MonoBehaviour
                 0);
 
             _ray.origin = _grenadeSpawnPoint.transform.position;
+
             _ray.direction = _mainCamera.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 12)) -
                              _ray.origin;
 
-            if (Physics.Raycast(_ray, out RaycastHit hitInfo))
+            if (Physics.Raycast(_ray, out var hitInfo, 20, _layerMask))
             {
-                var boss = hitInfo.collider.GetComponent<Boss>();
-                if (boss)
-                {
-                    _grenadeTargetPoint = hitInfo.point;
-                }
+                _grenadeTargetPoint = hitInfo.point;
+                _pointParticles.gameObject.SetActive(true);
+                _pointParticles.Play();
+                _pointParticles.transform.position = hitInfo.point;
             }
-                
+            else
+            {
+                _grenadeTargetPoint = _ray.GetPoint(12);
+                _pointParticles.Stop();
+                _pointParticles.gameObject.SetActive(false);
+            }
 
             Debug.DrawRay(_ray.origin, _ray.direction * 12, Color.red);
-
-            //_mainCamera.transform.RotateAround(_rotationPoint.transform.position, Vector3.up, transform.localRotation.y - mouseDelta.x / Screen.width);
-            //_mainCamera.transform.RotateAround(_rotationPoint.transform.position, _mainCamera.transform.right, mouseDelta.y / Screen.height);
-
-            //MarkOffsetChanged?.Invoke(_markOffset);
+            _rayParticles.transform.LookAt(_ray.GetPoint(1));
         }
 
-        if (Input.GetMouseButtonUp(0)) Throw?.Invoke();
+        if (Input.GetMouseButtonUp(0))
+        {
+            _rayParticles.gameObject.SetActive(false);
+            _pointParticles.gameObject.SetActive(false);
+            Throw?.Invoke();
+        }
     }
 
     private void OnEnable()
@@ -76,21 +85,24 @@ public class ThrowInput : MonoBehaviour
         _endAnimationHandler.GrenadeDropped += DropGrenade;
     }
 
-    public event Action<Vector3> MarkOffsetChanged;
     public event Action Throw;
 
     public void Enable()
     {
         _mainCamera.transform.SetParent(_rotationPoint.transform);
         _spawnedGrenade = SpawnGrenade();
-
-
+        _rayParticles.gameObject.SetActive(true);
+        _rayParticles.transform.LookAt(
+            _mainCamera.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 12)));
+        _pointParticles.gameObject.SetActive(true);
         enabled = true;
     }
 
     public void Disable()
     {
         _mainCamera.transform.SetParent(_cameraAnimator.transform);
+        _rayParticles.gameObject.SetActive(false);
+        _pointParticles.gameObject.SetActive(false);
         enabled = false;
     }
 

@@ -23,6 +23,7 @@ public class StateMachine : MonoBehaviour
         _uI.SettingsMenu.ResumeButton.onClick.AddListener(SetPlayState);
 
         _player.CollisionHandler.GateTaken += SetGateState;
+        _player.CollisionHandler.FinisherTaken += SetFinisherState;
         _player.PlayerAnimator.ThrowEnded += SetPlayState;
     }
 
@@ -32,6 +33,7 @@ public class StateMachine : MonoBehaviour
         _uI.SettingsMenu.ResumeButton.onClick.RemoveListener(SetPlayState);
 
         _player.CollisionHandler.GateTaken -= SetGateState;
+        _player.CollisionHandler.FinisherTaken -= SetFinisherState;
         _player.PlayerAnimator.ThrowEnded -= SetPauseState;
     }
 

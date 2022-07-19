@@ -79,6 +79,11 @@ namespace RunnerMovementSystem
             PathChanged?.Invoke(transition);
         }
 
+        public void SetSpeed(float value)
+        {
+            _options.SetSpeed(value);
+        }
+
         private void OnRoadEnd(RoadSegment roadSegment)
         {
             var nearestRoad = roadSegment.GetNearestRoad(transform.position);

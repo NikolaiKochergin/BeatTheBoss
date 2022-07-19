@@ -14,6 +14,8 @@
     public void Enter()
     {
         _uI.FinisherMenu.Show();
+        _player.PlayerAnimator.ShowIdle();
+        _boss.BossAnimator.ShowIdle();
     }
 
     public void Exit()

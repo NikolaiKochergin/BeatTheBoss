@@ -26,6 +26,11 @@ public class BossAnimator : MonoBehaviour
         _bossAnimator.SetTrigger(Terrified);
     }
 
+    public void SetTimeScale(float value)
+    {
+        _bossAnimator.speed = value;
+    }
+
     private void ResetTriggers()
     {
         _bossAnimator.ResetTrigger(Idle);
