@@ -13,7 +13,7 @@ public class PlayerBase : MonoBehaviour
     public UIWidgetRageBar UIWidgetRageBar => _rageBar;
     public PlayerAnimator PlayerAnimator => _playerAnimator;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _rage = new Parameter(_playerConfig.DefaultRage);
         _rageBar.Initialize(_rage, _playerConfig.MaxRage);

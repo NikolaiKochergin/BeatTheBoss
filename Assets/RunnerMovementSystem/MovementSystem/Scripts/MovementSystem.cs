@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using RunnerMovementSystem.Model;
@@ -15,11 +16,13 @@ namespace RunnerMovementSystem
         private IMovement _currentMovement;
 
         public event UnityAction<PathSegment> PathChanged;
+        public event Action RoadEndReached;
 
         public float Offset => _currentMovement.Offset;
         public float CurrentSpeed => _movementBehaviour.GetCurrentSpeed();
         public bool IsOnTransition => _currentMovement is TransitionMovement;
         public PathSegment CurrentRoad => _currentMovement.PathSegment;
+        public float DefaultSpeed => _options.MoveSpeed;
 
         private void Awake()
         {
@@ -88,7 +91,10 @@ namespace RunnerMovementSystem
         {
             var nearestRoad = roadSegment.GetNearestRoad(transform.position);
             if (nearestRoad == null)
+            {
+                RoadEndReached?.Invoke();
                 return;
+            }
 
             _roadMovement.Init(nearestRoad);
             _currentMovement = _roadMovement;

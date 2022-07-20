@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 
+
+// Этот класс нужно зарефакторить и разложить в нормальную иерархию.
 public class ThrowInput : MonoBehaviour
 {
     [SerializeField] [Min(0)] private float _sensitivity;

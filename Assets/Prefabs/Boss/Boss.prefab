@@ -311,7 +311,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6517188952725317769}
   - component: {fileID: 6042097351266472480}
-  - component: {fileID: 1681857844098493947}
   - component: {fileID: 2202837449274316726}
   - component: {fileID: 163751834}
   - component: {fileID: 442813285581427979}
@@ -352,23 +351,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bossAnimator: {fileID: 4499917311205908217}
-  _bossHittedView: {fileID: 2498911919427242320}
+  bossHittedView: {fileID: 0}
   _bossInput: {fileID: 163751834}
   _movementSystem: {fileID: 2202837449274316726}
---- !u!114 &1681857844098493947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6517188952725317768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fc2f654029cb0c48a53bb8576f272dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _boss: {fileID: 6042097351266472480}
-  _slider: {fileID: 5475497521078335002}
 --- !u!114 &2202837449274316726
 MonoBehaviour:
   m_ObjectHideFlags: 0

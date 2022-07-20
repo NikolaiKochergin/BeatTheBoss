@@ -1,11 +1,10 @@
-using System;
 using UnityEngine;
 
 public class MainCameraAnimator : MonoBehaviour
 {
     private const string ThrowViewIn = nameof(ThrowViewIn);
     private const string ThrowViewOut = nameof(ThrowViewOut);
-    
+
     [SerializeField] private Animator _animator;
 
     private void Awake()
@@ -22,10 +21,11 @@ public class MainCameraAnimator : MonoBehaviour
     {
         _animator.enabled = false;
     }
-    
+
     public void ShowThrowViewIn()
     {
         Enable();
+        _animator.Play(ThrowViewIn);
     }
 
     public void ShowThrowViewOut()

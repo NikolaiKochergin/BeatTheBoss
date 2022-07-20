@@ -18,8 +18,7 @@ public class EndAnimationHandler : MonoBehaviour
     {
         ThrowEnded = callback;
     }
-    
-    
+
     // Used in throw end animation
     private void Handler_ThrowEnded()
     {

@@ -24,7 +24,6 @@
     public void Exit()
     {
         _player.StopMove();
-        //_boss.StopMove();
         _uI.PlayMenu.Hide();
     }
 }

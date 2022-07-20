@@ -5,14 +5,29 @@ using UnityEngine;
 public class Boss : MonoBehaviour
 {
     [SerializeField] private BossAnimator _bossAnimator;
-    [SerializeField] private BossHittedView _bossHittedView;
+    [SerializeField] private BossHittedView bossHittedView;
     [SerializeField] private BossInput _bossInput;
     [SerializeField] private MovementSystem _movementSystem;
 
-    public BossAnimator BossAnimator => _bossAnimator;
-    public BossHittedView BossHittedView => _bossHittedView;
+    private float _defaultSpeed;
 
-    private float _defaultSpeed = 10;
+    public BossAnimator BossAnimator => _bossAnimator;
+    public BossHittedView BossHittedView => bossHittedView;
+
+    private void Awake()
+    {
+        _defaultSpeed = _movementSystem.DefaultSpeed;
+    }
+
+    private void OnEnable()
+    {
+        _movementSystem.RoadEndReached += OnRoadEndReached;
+    }
+
+    private void OnDisable()
+    {
+        _movementSystem.RoadEndReached -= OnRoadEndReached;
+    }
 
     public void StarMove()
     {
@@ -24,8 +39,15 @@ public class Boss : MonoBehaviour
         _bossInput.Disable();
     }
 
-    public void SetSpeedScale(float value)
+    public void SetTimeScale(float value)
     {
         _movementSystem.SetSpeed(_defaultSpeed * value);
+        _bossAnimator.SetTimeScale(value);
+    }
+
+    private void OnRoadEndReached()
+    {
+        StopMove();
+        _bossAnimator.ShowFinisher();
     }
 }

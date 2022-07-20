@@ -8,11 +8,24 @@ public sealed class Player : PlayerBase
     [SerializeField] private MovementSystem _movementSystem;
     [SerializeField] private ThrowInput _throwInput;
 
+    private float _defaultSpeed;
+    
     public ThrowInput ThrowInput => _throwInput;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        _defaultSpeed = _movementSystem.DefaultSpeed;
+    }
 
     private void Update()
     {
         PlayerAnimator.SetTurn(_mouseInput.TurnValue);
+    }
+
+    public void SetTimeScale(float value)
+    {
+        _movementSystem.SetSpeed(_defaultSpeed * value);
     }
 
     public void StartMove()

@@ -1,7 +1,8 @@
+using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayerConfig", menuName = "ScriptableObjects/PlayerConfig", order = 1)]
-public class PlayerConfig : ScriptableObject
+[Serializable]
+public class PlayerConfig
 {
     [SerializeField] [Min(0)] private int _defaultRage;
     [SerializeField] [Min(0)] private int _maxRage = 100;
