@@ -49,7 +49,7 @@ public class StateMachine : MonoBehaviour
             [typeof(IdleState)] = new IdleState(_uI, _player, _boss),
             [typeof(PlayState)] = new PlayState(_uI, _player, _boss),
             [typeof(PauseState)] = new PauseState(_uI, _player, _boss),
-            [typeof(FinisherState)] = new FinisherState(_uI, _player, _boss),
+            [typeof(FinisherState)] = new FinisherState(_uI, _player, _boss,_mainCameraAnimator),
             [typeof(EndLevelState)] = new EndLevelState(_uI, _player, _boss),
             [typeof(FailState)] = new FailState(_uI, _player, _boss),
             [typeof(GateState)] = new GateState(_uI, _player, _boss, _mainCameraAnimator)

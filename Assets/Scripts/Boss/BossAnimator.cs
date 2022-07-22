@@ -38,6 +38,16 @@ public class BossAnimator : MonoBehaviour
         _bossAnimator.speed = value;
     }
 
+    public void Enable()
+    {
+        _bossAnimator.enabled = true;
+    }
+
+    public void Disable()
+    {
+        _bossAnimator.enabled = false;
+    }
+
     private void ResetTriggers()
     {
         _bossAnimator.ResetTrigger(Idle);

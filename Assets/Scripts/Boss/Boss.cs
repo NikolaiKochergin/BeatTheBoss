@@ -1,4 +1,3 @@
-using System;
 using RunnerMovementSystem;
 using UnityEngine;
 
@@ -8,11 +7,13 @@ public class Boss : MonoBehaviour
     [SerializeField] private BossHittedView bossHittedView;
     [SerializeField] private BossInput _bossInput;
     [SerializeField] private MovementSystem _movementSystem;
+    [SerializeField] private Ragdoll _ragdoll;
 
     private float _defaultSpeed;
 
     public BossAnimator BossAnimator => _bossAnimator;
     public BossHittedView BossHittedView => bossHittedView;
+    public Ragdoll Ragdoll => _ragdoll;
 
     private void Awake()
     {

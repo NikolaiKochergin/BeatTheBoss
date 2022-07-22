@@ -20,7 +20,7 @@ public class ThrowInput : MonoBehaviour
 
     private Vector3 _clickPosition;
 
-    private Quaternion _defaultRotation;
+    private Vector3 _defaultRotation;
 
     private Vector3 _grenadeTargetPoint;
     private Camera _mainCamera;
@@ -39,16 +39,16 @@ public class ThrowInput : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             _clickPosition = Input.mousePosition;
-            _defaultRotation = _rotationPoint.transform.localRotation;
+            _defaultRotation = _rotationPoint.transform.localRotation.eulerAngles;
         }
 
         if (Input.GetMouseButton(0))
         {
             var mouseDelta = Input.mousePosition - _clickPosition;
-
+            
             _rotationPoint.transform.localRotation = Quaternion.Euler(
-                (_defaultRotation.y - mouseDelta.y) * _sensitivity,
-                (_defaultRotation.x + mouseDelta.x) * _sensitivity,
+                _defaultRotation.y - mouseDelta.y / Screen.height * _sensitivity,
+                _defaultRotation.x + mouseDelta.x / Screen.width * _sensitivity,
                 0);
 
             _ray.origin = _grenadeSpawnPoint.transform.position;
